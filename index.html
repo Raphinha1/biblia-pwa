@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Biblia RV1960</title>
+  <meta name="description" content="Buscador de versículos y capítulos de la Biblia (Reina-Valera 1960)" />
+  <meta name="theme-color" content="#1f3a5f" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>📖 Biblia RV1960</h1>
+    <span id="net" class="net" role="status">en línea</span>
+  </header>
+
+  <main>
+    <form id="form" class="search" autocomplete="off">
+      <label for="q" class="sr-only">Referencia</label>
+      <input id="q" type="search" placeholder="Ej.: Juan 3:16 · Salmos 23 · 1 Corintios 13:4-7"
+             list="libros" inputmode="text" autocapitalize="off" spellcheck="false" />
+      <datalist id="libros"></datalist>
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div class="selectors">
+      <select id="selLibro" aria-label="Libro"></select>
+      <select id="selCap" aria-label="Capítulo"></select>
+      <button id="btnCap" type="button">Ver capítulo</button>
+      <button id="btnRandom" type="button" title="Versículo al azar">🎲 Al azar</button>
+    </div>
+
+    <p id="msg" class="msg" role="alert" hidden></p>
+
+    <section id="result" class="result" hidden>
+      <div class="result-head">
+        <h2 id="refTitle"></h2>
+        <div class="tools">
+          <button id="btnPrev" type="button" aria-label="Capítulo anterior">◀</button>
+          <button id="btnNext" type="button" aria-label="Capítulo siguiente">▶</button>
+          <button id="btnSmaller" type="button" aria-label="Letra más pequeña">A−</button>
+          <button id="btnBigger" type="button" aria-label="Letra más grande">A+</button>
+          <button id="btnCopy" type="button" aria-label="Copiar">📋 Copiar</button>
+          <button id="btnShare" type="button" aria-label="Compartir" hidden>🔗 Compartir</button>
+          <button id="btnPresent" type="button">Presentar</button>
+        </div>
+      </div>
+      <ol id="verses" class="verses"></ol>
+    </section>
+
+    <section id="history" class="history" hidden>
+      <h3>Recientes</h3>
+      <ul id="histList"></ul>
+    </section>
+  </main>
+
+  <!-- Modo presentación (pantalla completa) -->
+  <div id="presenter" class="presenter" hidden>
+    <button id="pClose" class="p-close" aria-label="Cerrar presentación">✕</button>
+    <div class="p-body">
+      <p id="pText" class="p-text"></p>
+      <p id="pRef" class="p-ref"></p>
+    </div>
+    <div class="p-nav">
+      <button id="pPrev" aria-label="Versículo anterior">◀</button>
+      <span id="pCount"></span>
+      <button id="pNext" aria-label="Versículo siguiente">▶</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
